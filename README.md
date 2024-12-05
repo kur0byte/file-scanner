@@ -20,7 +20,7 @@ A high-performance Go utility for concurrent pattern matching across multiple re
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/file-scanner.git
+git clone https://github.com/kur0byte/file-scanner.git
 cd file-scanner
 
 # Build the application
