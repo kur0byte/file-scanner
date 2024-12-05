@@ -1,0 +1,36 @@
+Package main provides a high-performance file scanner for searching patterns
+across multiple repositories
+
+TYPES
+
+type MatchInfo struct {
+	Pattern    string // Original search pattern that matched
+	StartIndex int    // Starting character position of the match
+	EndIndex   int    // Ending character position of the match
+}
+    MatchInfo contains information about a pattern match in a file
+
+type QueriesFile struct {
+	Queries []Query `json:"queries"` // Array of queries to process
+}
+    QueriesFile represents the structure of the JSON file containing search
+    queries
+
+type Query struct {
+	Pattern    string   `json:"query"`      // Pattern to search for, supports wildcards (* and ?)
+	Extensions []string `json:"extensions"` // File extensions to search in (e.g., [".js", ".ts"])
+}
+    Query represents a search pattern and its associated file extensions
+
+type ResultChannel chan SearchResult
+    ResultChannel is a channel type for passing search results
+
+type SearchResult struct {
+	FilePath   string    // Full path to the file containing the match
+	LineNumber int       // Line number where the match was found
+	LineText   string    // Content of the line containing the match
+	Repository string    // Name of the repository containing the file
+	MatchInfo  MatchInfo // Information about the match
+}
+    SearchResult represents a single match result from the file scan
+
